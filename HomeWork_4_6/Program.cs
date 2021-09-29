@@ -8,11 +8,36 @@ namespace HomeWork_4_6
         static void Main(string[] args)
         {
             int[,] stateAccaunting = new int[12, 4];
-            CreateBase(ref stateAccaunting);
+            CreateBase(stateAccaunting);
+
+
+            Console.WriteLine("\n Pascal");
+            PritPascal(10);
+
+            
+            Console.WriteLine("Исходные две матрицы");
+            int[,] matrix1 = { { 3, 4, 5 }, { 7, 6, 10 } , { 3, 2, 7 } };
+            int[,] matrix2 = { { 2, 9, 8}, { 3, 2, 7 } , { 7, 6, 10 } };
+            
+            Calc.PrintMatrix(matrix1);
+            Console.WriteLine();
+            Calc.PrintMatrix(matrix2);
+
+            Console.WriteLine("\nдействия Умножить на число 5.");
+            Calc.PrintMatrix(Calc.MatrixMultiplication(matrix1, 5));
+ 
+            Console.WriteLine("\nдействия Сумма матрицы");
+            Calc.PrintMatrix(Calc.SummMatrix(matrix1, matrix2));
+
+            Console.WriteLine("\nдействия Разница матрицы");
+            Calc.PrintMatrix(Calc.Minus(matrix1, matrix2));
+
+            Console.WriteLine("\nдействия Произведение матрицы");
+            Calc.PrintMatrix(Calc.MultiMatrix(matrix1, matrix2));
         }
         
        
-        static void CreateBase(ref int[,] stateAccaunting)
+        static void CreateBase(int[,] stateAccaunting)
         {
             Random random = new Random();
             int temp = 0;
@@ -58,6 +83,30 @@ namespace HomeWork_4_6
 
         } 
 
-    }
 
+        /// <summary>
+        /// Создание и печать паскаля
+        /// </summary>
+        /// <param name="size"></param>
+        static void PritPascal(int size)
+        {
+            int[,] a = new int[size, size];
+
+            for (int i = 0; i < size; i++)
+                for (int j = 0; j < size; j++)
+                    a[i, j] = 1 + j + i;
+
+            for (int i = 0; i < size; i++)
+            {
+                for (int j = 0; j <= i; j++)
+                    Console.Write("{0}{1}", a[i, j], "\t");
+                Console.WriteLine();
+
+            }
+
+        }
+
+
+
+    }
  }
